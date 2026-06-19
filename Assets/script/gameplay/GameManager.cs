@@ -33,4 +33,8 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+    public void startGame()
+    {
+        SceneManager.LoadScene("Gameplay");
+    }
 }

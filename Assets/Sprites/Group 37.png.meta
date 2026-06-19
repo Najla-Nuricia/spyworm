@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4adf0a069cf339e449b2fb690361634b
+guid: 65816974b3722b447ac34ee73a6aa52d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3156439348914516204
-    second: worm_tail_0
+      213: 1928854079672290856
+    second: Group 37_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: worm_tail_0
+      name: Group 37_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 9
-        width: 192
-        height: 182
+        x: 0
+        y: 0
+        width: 31
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 41f82ecb2231234d0800000000000000
-      internalID: -3156439348914516204
+      spriteID: 82e0e62e09aa4ca10800000000000000
+      internalID: 1928854079672290856
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      worm_tail_0: -3156439348914516204
+      Group 37_0: 1928854079672290856
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

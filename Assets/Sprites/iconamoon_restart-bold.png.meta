@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4adf0a069cf339e449b2fb690361634b
+guid: b6a95c50e061bbe498df265ebde1ed1b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3156439348914516204
-    second: worm_tail_0
+      213: -772616342357291527
+    second: iconamoon_restart-bold_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: worm_tail_0
+      name: iconamoon_restart-bold_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 9
-        width: 192
-        height: 182
+        x: 0
+        y: 0
+        width: 30
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 41f82ecb2231234d0800000000000000
-      internalID: -3156439348914516204
+      spriteID: 9fdc126b78d1745f0800000000000000
+      internalID: -772616342357291527
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      worm_tail_0: -3156439348914516204
+      iconamoon_restart-bold_0: -772616342357291527
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

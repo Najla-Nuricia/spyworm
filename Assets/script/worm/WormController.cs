@@ -8,6 +8,7 @@ public class WormController : MonoBehaviour
 
     public int segments = 20;
     public float curveHeight = 2f;
+    public float maxBodyLength = 4f; 
 
     private LineRenderer lr;
 
@@ -19,24 +20,34 @@ public class WormController : MonoBehaviour
 
     void Update()
     {
+        ConstrainTailDistance();
         DrawWorm();
+    }
+
+    void ConstrainTailDistance()
+    {
+        if (head == null || tail == null) return;
+
+        float currentDistance = Vector3.Distance(head.position, tail.position);
+
+        if (currentDistance > maxBodyLength)
+        {
+            Vector3 directionToTail = (tail.position - head.position).normalized;
+            tail.position = head.position + directionToTail * maxBodyLength;
+        }
     }
 
     void DrawWorm()
     {
         Vector3 center = (head.position + tail.position) / 2f;
+        float distance = Vector3.Distance(head.position, tail.position);
 
-        float distance =
-            Vector3.Distance(head.position, tail.position);
+        Vector3 perp = Vector3.Cross(
+            (tail.position - head.position).normalized,
+            Vector3.forward
+        );
 
-        Vector3 perp =
-            Vector3.Cross(
-                (tail.position - head.position).normalized,
-                Vector3.forward
-            );
-
-        Vector3 controlPoint =
-            center + perp * curveHeight * Mathf.Clamp01(1f - distance / 5f);
+        Vector3 controlPoint = center + perp * curveHeight * Mathf.Clamp01(1f - distance / maxBodyLength);
 
         for (int i = 0; i < segments; i++)
         {
