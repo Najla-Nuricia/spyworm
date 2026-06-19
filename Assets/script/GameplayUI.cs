@@ -1,17 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ResultUI : MonoBehaviour
+public class GameplayUI : MonoBehaviour
 {
-    [SerializeField] private GameObject gameOverPanel;
-    [SerializeField] private GameObject completePanel;
     [SerializeField] private Button retryButton; 
 
     private void Start()
     {
-        gameOverPanel.SetActive(!GameState.IsWin);
-        completePanel.SetActive(GameState.IsWin);
-
         if (retryButton != null && GameManager.Instance != null)
         {
             retryButton.onClick.RemoveAllListeners(); 
@@ -19,7 +14,7 @@ public class ResultUI : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Retry Button atau GameManager.Instance tidak ditemukan!");
+            Debug.LogWarning("Retry Button atau GameManager.Instance tidak ditemukan di Gameplay!");
         }
     }
 }

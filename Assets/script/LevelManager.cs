@@ -17,6 +17,10 @@ public class LevelManager : MonoBehaviour
     {
         Instance = this;
     }
+    void Start()
+    {
+        LoadLevel();
+    }
 
     public void LoadLevel()
     {

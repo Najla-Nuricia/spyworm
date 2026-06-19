@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            transform.SetParent(null);
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        LevelManager.Instance.RestartLevel();
+        SceneManager.LoadScene("Gameplay");
     }
 
     public void Home()
