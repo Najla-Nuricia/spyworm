@@ -1,9 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections; // Wajib ditambahkan untuk menggunakan Coroutine
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
+    [Header("Pengaturan Jeda Scene (Detik)")]
+    [SerializeField] private float delayTime = 0.5f; 
 
     void Awake()
     {
@@ -21,20 +25,27 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        SceneManager.LoadScene("Result");
+        StartCoroutine(LoadSceneWithDelay("Result"));
     }
 
     public void Restart()
     {
-        SceneManager.LoadScene("Gameplay");
+        StartCoroutine(LoadSceneWithDelay("Gameplay"));
     }
 
     public void Home()
     {
-        SceneManager.LoadScene("MainMenu");
+        StartCoroutine(LoadSceneWithDelay("MainMenu"));
     }
+
     public void startGame()
     {
-        SceneManager.LoadScene("Gameplay");
+        StartCoroutine(LoadSceneWithDelay("Gameplay"));
+    }
+
+    private IEnumerator LoadSceneWithDelay(string sceneName)
+    {
+        yield return new WaitForSeconds(delayTime);
+        SceneManager.LoadScene(sceneName);
     }
 }
