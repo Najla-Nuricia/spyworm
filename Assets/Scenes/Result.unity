@@ -431,6 +431,9 @@ MonoBehaviour:
   homeButtons:
   - {fileID: 831138261}
   - {fileID: 1410350578}
+  audioSource: {fileID: 0}
+  winSound: {fileID: 8300000, guid: 87dc2ebb01d260848accdbc8f5c70429, type: 3}
+  loseSound: {fileID: 8300000, guid: b721af526f3b06f4d80cce207ed47633, type: 3}
 --- !u!1 &509247965
 GameObject:
   m_ObjectHideFlags: 0

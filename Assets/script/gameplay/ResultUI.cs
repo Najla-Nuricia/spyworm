@@ -15,19 +15,36 @@ public class ResultUI : MonoBehaviour
     [Header("List Tombol Home")]
     [SerializeField] private List<Button> homeButtons = new List<Button>(); 
 
+    [Header("Audio Settings")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip winSound;
+    [SerializeField] private AudioClip loseSound;
+
     private void Start()
     {
         gameOverPanel.SetActive(!GameState.IsWin);
         completePanel.SetActive(GameState.IsWin);
 
-        // 1. Menghubungkan tombol Retry tunggal ke GameManager
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        if (GameState.IsWin && winSound != null)
+        {
+            audioSource.PlayOneShot(winSound);
+        }
+        else if (!GameState.IsWin && loseSound != null)
+        {
+            audioSource.PlayOneShot(loseSound);
+        }
+
         if (retryButton != null && GameManager.Instance != null)
         {
             retryButton.onClick.RemoveAllListeners();
             retryButton.onClick.AddListener(GameManager.Instance.Restart);
         }
 
-        // 2. Menghubungkan semua tombol Home yang ada di dalam List ke GameManager
         if (GameManager.Instance != null)
         {
             foreach (Button btn in homeButtons)
@@ -40,7 +57,6 @@ public class ResultUI : MonoBehaviour
             }
         }
 
-        // 3. Menghubungkan tombol Next Level ke LevelManager
         if (nextLevelButton != null && LevelManager.Instance != null)
         {
             nextLevelButton.onClick.RemoveAllListeners();
