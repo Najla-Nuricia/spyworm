@@ -1466,7 +1466,6 @@ GameObject:
   m_Component:
   - component: {fileID: 969704952}
   - component: {fileID: 969704953}
-  - component: {fileID: 969704954}
   m_Layer: 0
   m_Name: begron
   m_TagString: Untagged
@@ -1548,18 +1547,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &969704954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 969704951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84b38693e2aebb74f857f629d4354f91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FitBackground
 --- !u!1001 &1025030498
 PrefabInstance:
   m_ObjectHideFlags: 0
