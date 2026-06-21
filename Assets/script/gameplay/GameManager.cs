@@ -43,6 +43,22 @@ public class GameManager : MonoBehaviour
         StartCoroutine(LoadSceneWithDelay("Gameplay"));
     }
 
+    public void GoToNextLevel()
+    {
+        StartCoroutine(NextLevelWithDelay());
+    }
+
+    private IEnumerator NextLevelWithDelay()
+    {
+        if (LevelManager.Instance != null)
+        {
+            LevelManager.Instance.NextLevel();
+        }
+        
+        yield return new WaitForSeconds(delayTime);
+        SceneManager.LoadScene("Gameplay");
+    }
+
     private IEnumerator LoadSceneWithDelay(string sceneName)
     {
         yield return new WaitForSeconds(delayTime);

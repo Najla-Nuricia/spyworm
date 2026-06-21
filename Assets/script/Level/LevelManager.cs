@@ -37,10 +37,19 @@ public class LevelManager : MonoBehaviour
     public void NextLevel()
     {
         levels[currentLevel].levelObject.SetActive(false);
+        
         currentLevel++;
 
         if (currentLevel >= levels.Length)
-            currentLevel = levels.Length - 1;
+        {
+            currentLevel = levels.Length - 1; 
+
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.GameOver();
+            }
+            return; 
+        }
 
         levels[currentLevel].levelObject.SetActive(true);
     }

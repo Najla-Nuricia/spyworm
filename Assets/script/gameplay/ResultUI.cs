@@ -57,10 +57,10 @@ public class ResultUI : MonoBehaviour
             }
         }
 
-        if (nextLevelButton != null && LevelManager.Instance != null)
+        if (nextLevelButton != null && GameManager.Instance != null)
         {
             nextLevelButton.onClick.RemoveAllListeners();
-            nextLevelButton.onClick.AddListener(LevelManager.Instance.NextLevel);
+            nextLevelButton.onClick.AddListener(GameManager.Instance.GoToNextLevel);
         }
     }
 }
