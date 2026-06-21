@@ -22,7 +22,7 @@ public class WormDragAudio : MonoBehaviour
     {
         if (dragSound != null && !audioSource.isPlaying)
         {
-            audioSource.Play();
+            audioSource.PlayOneShot(dragSound);
         }
     }
 
