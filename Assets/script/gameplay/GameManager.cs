@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections; // Wajib ditambahkan untuk menggunakan Coroutine
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
 
     [Header("Pengaturan Jeda Scene (Detik)")]
     [SerializeField] private float delayTime = 0.5f; 
+
+    // Tempat menitipkan data angka level agar tidak hilang saat scene dimuat ulang
+    [HideInInspector] public int savedLevel = 0;
+    [HideInInspector] public int totalLevel;
 
     void Awake()
     {
@@ -23,6 +27,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    
+
     public void GameOver()
     {
         StartCoroutine(LoadSceneWithDelay("Result"));
@@ -35,29 +41,31 @@ public class GameManager : MonoBehaviour
 
     public void Home()
     {
+        // Saat kembali ke Main Menu, reset data level kembali ke nol
+        savedLevel = 0;
         StartCoroutine(LoadSceneWithDelay("MainMenu"));
     }
 
     public void startGame()
     {
+        savedLevel = 0;
         StartCoroutine(LoadSceneWithDelay("Gameplay"));
     }
 
     public void GoToNextLevel()
     {
-        StartCoroutine(NextLevelWithDelay());
+        savedLevel++;
+
+        if (savedLevel >= totalLevel)
+        {
+            savedLevel = 0;
+            StartCoroutine(LoadSceneWithDelay("MainMenu"));
+            return;
+        }
+
+        StartCoroutine(LoadSceneWithDelay("Gameplay"));
     }
 
-    private IEnumerator NextLevelWithDelay()
-    {
-        if (LevelManager.Instance != null)
-        {
-            LevelManager.Instance.NextLevel();
-        }
-        
-        yield return new WaitForSeconds(delayTime);
-        SceneManager.LoadScene("Gameplay");
-    }
 
     private IEnumerator LoadSceneWithDelay(string sceneName)
     {

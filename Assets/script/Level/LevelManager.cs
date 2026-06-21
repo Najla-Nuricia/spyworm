@@ -11,47 +11,44 @@ public class LevelManager : MonoBehaviour
     }
 
     public Level[] levels;
-    public int currentLevel = 0;
+    
+    // Angka level sekarang mengambil data aman yang disimpan di GameManager
+    public int currentLevel 
+    {
+        get { return GameManager.Instance != null ? GameManager.Instance.savedLevel : 0; }
+        set { if (GameManager.Instance != null) GameManager.Instance.savedLevel = value; }
+    }
 
     void Awake()
     {
         Instance = this;
     }
+
     void Start()
     {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.totalLevel = levels.Length;
+        }
+
         LoadLevel();
     }
 
     public void LoadLevel()
     {
-        // matikan semua level dulu
         for (int i = 0; i < levels.Length; i++)
         {
-            levels[i].levelObject.SetActive(false);
-        }
-
-        // aktifkan level sekarang
-        levels[currentLevel].levelObject.SetActive(true);
-    }
-
-    public void NextLevel()
-    {
-        levels[currentLevel].levelObject.SetActive(false);
-        
-        currentLevel++;
-
-        if (currentLevel >= levels.Length)
-        {
-            currentLevel = levels.Length - 1; 
-
-            if (GameManager.Instance != null)
+            if (levels[i].levelObject != null)
             {
-                GameManager.Instance.GameOver();
+                levels[i].levelObject.SetActive(false);
             }
-            return; 
         }
 
-        levels[currentLevel].levelObject.SetActive(true);
+        if (currentLevel >= 0 && currentLevel < levels.Length)
+        {
+            levels[currentLevel].levelObject.SetActive(true);
+        }
+       
     }
 
     public void RestartLevel()
