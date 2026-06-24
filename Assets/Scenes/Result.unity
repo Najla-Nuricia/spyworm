@@ -1350,7 +1350,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: yaayy your wife is proud of you
+  m_text: yaayy mama is not mad anymore
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3dd34b5630dd39640a108ddc0956b275, type: 2}
   m_sharedMaterial: {fileID: 1182326168821681319, guid: 3dd34b5630dd39640a108ddc0956b275, type: 2}
@@ -2047,6 +2047,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   delayTime: 0.5
+  savedLevel: 0
+  totalLevel: 0
 --- !u!4 &1987510694
 Transform:
   m_ObjectHideFlags: 0
