@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 
@@ -7,41 +6,36 @@ using DG.Tweening;
 public class SceneTransition : MonoBehaviour
 {
     private CanvasGroup canvasGroup;
-    public float fadeDuration = 0.5f;
+
+    [SerializeField] private float fadeDuration = 2f;
 
     void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
-        // Pastikan saat game mulai, layar transparan
-        canvasGroup.alpha = 0;
-        canvasGroup.blocksRaycasts = false;
+        canvasGroup.alpha = 1;
     }
 
-    // Panggil fungsi ini dari mana saja (tombol, trigger, dll)
+    void Start()
+    {
+        canvasGroup.DOFade(0, fadeDuration);
+    }
+
     public void StartTransition(string sceneName)
     {
         canvasGroup.blocksRaycasts = true;
-        canvasGroup.DOFade(1, fadeDuration).OnComplete(() =>
-        {
-            SceneManager.LoadScene(sceneName);
-        });
+
+        canvasGroup.DOKill();
+
+        canvasGroup
+            .DOFade(1, fadeDuration)
+            .OnComplete(() =>
+            {
+                SceneManager.LoadScene(sceneName);
+            });
     }
 
-    // Panggil fungsi ini lewat event sceneLoaded agar layar terbuka otomatis saat scene baru siap
-    void OnEnable()
+    private void OnDestroy()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        canvasGroup.alpha = 1;
-        canvasGroup.DOFade(0, fadeDuration);
-        canvasGroup.blocksRaycasts = false;
+        canvasGroup.DOKill();
     }
 }
