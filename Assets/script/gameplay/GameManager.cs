@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
 
     public void GoToNextLevel()
     {
+        UnlockNextLevel(savedLevel);
         savedLevel++;
 
         if (savedLevel >= totalLevel)
