@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -12,7 +13,6 @@ public class LevelManager : MonoBehaviour
 
     public Level[] levels;
     
-    // Angka level sekarang mengambil data aman yang disimpan di GameManager
     public int currentLevel 
     {
         get { return GameManager.Instance != null ? GameManager.Instance.savedLevel : 0; }
@@ -48,7 +48,29 @@ public class LevelManager : MonoBehaviour
         {
             levels[currentLevel].levelObject.SetActive(true);
         }
-       
+    }
+
+    public void NextLevel()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.UnlockNextLevel(currentLevel);
+        }
+
+        currentLevel++;
+
+        if (currentLevel >= levels.Length)
+        {
+            currentLevel = levels.Length - 1;
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.GameOver();
+            }
+        }
+        else
+        {
+            LoadLevel();
+        }
     }
 
     public void RestartLevel()

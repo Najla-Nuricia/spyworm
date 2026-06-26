@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using DG.Tweening; // Wajib ditambahkan untuk DOTween
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,8 +16,13 @@ public class GameManager : MonoBehaviour
     [Header("Pengaturan Durasi Fade (Detik)")]
     [SerializeField] private float fadeDuration = 0.5f;
 
+    [Header("Reference Panel UI Terpusat")]
+    public CanvasGroup globalComicPanel;
+    public CanvasGroup globalLevelSelectPanel;
+
     [HideInInspector] public int savedLevel = 0;
     [HideInInspector] public int totalLevel;
+    [HideInInspector] public bool isGameBeaten = false;
 
     void Awake()
     {
@@ -33,44 +38,42 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PlayGameWithComic(CanvasGroup comicCG, CanvasGroup mainMenuCG)
+    public void PlayLevel1WithComic()
     {
-        StartCoroutine(ComicSequence(comicCG, mainMenuCG));
+        StartCoroutine(Level1ComicSequence());
     }
 
-    private IEnumerator ComicSequence(CanvasGroup comicCG, CanvasGroup mainMenuCG)
+    private IEnumerator Level1ComicSequence()
     {
-        // 1. Fade Out Menu Utama
-        if (mainMenuCG != null)
+        if (globalLevelSelectPanel != null)
         {
-            mainMenuCG.DOFade(0f, fadeDuration);
-            mainMenuCG.interactable = false;
-            mainMenuCG.blocksRaycasts = false;
+            globalLevelSelectPanel.DOFade(0f, fadeDuration);
+            globalLevelSelectPanel.interactable = false;
+            globalLevelSelectPanel.blocksRaycasts = false;
             yield return new WaitForSeconds(fadeDuration);
-            mainMenuCG.gameObject.SetActive(false);
+            globalLevelSelectPanel.gameObject.SetActive(false);
         }
 
-        // 2. Fade In Panel Komik
-        if (comicCG != null)
+        if (globalComicPanel != null)
         {
-            comicCG.gameObject.SetActive(true);
-            comicCG.alpha = 0f;
-            comicCG.DOFade(1f, fadeDuration);
+            // Paksa aktifkan game object fisiknya dulu biar ga ghaib
+            globalComicPanel.gameObject.SetActive(true); 
+            globalComicPanel.alpha = 0f;
+            globalComicPanel.DOFade(1f, fadeDuration);
             yield return new WaitForSeconds(fadeDuration);
         }
 
-        // 3. Tahan Komik Sesuai Durasi
         yield return new WaitForSeconds(comicDuration);
 
-        // 4. Fade Out Panel Komik Sebelum Pindah Scene
-        if (comicCG != null)
+        if (globalComicPanel != null)
         {
-            comicCG.DOFade(0f, fadeDuration);
+            globalComicPanel.DOFade(0f, fadeDuration);
             yield return new WaitForSeconds(fadeDuration);
+            globalComicPanel.gameObject.SetActive(false);
         }
 
-        // 5. Pindah ke Scene Gameplay
-        SceneManager.LoadScene("Gameplay");
+        savedLevel = 0;
+        StartCoroutine(LoadSceneWithDelay("Gameplay"));
     }
 
     public void GameOver()
@@ -85,13 +88,11 @@ public class GameManager : MonoBehaviour
 
     public void Home()
     {
-        savedLevel = 0;
         StartCoroutine(LoadSceneWithDelay("MainMenu"));
     }
 
     public void startGame()
     {
-        savedLevel = 0;
         StartCoroutine(LoadSceneWithDelay("Gameplay"));
     }
 
@@ -101,6 +102,7 @@ public class GameManager : MonoBehaviour
 
         if (savedLevel >= totalLevel)
         {
+            isGameBeaten = true;
             savedLevel = 0;
             StartCoroutine(LoadSceneWithDelay("MainMenu"));
             return;
@@ -113,5 +115,26 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delayTime);
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void UnlockNextLevel(int completedLevelIndex)
+    {
+        int nextLevel = completedLevelIndex + 1;
+
+        if (nextLevel >= totalLevel) 
+        {
+            return;
+        }
+
+        if (nextLevel > PlayerPrefs.GetInt("MaxLevelUnlocked", 0))
+        {
+            PlayerPrefs.SetInt("MaxLevelUnlocked", nextLevel);
+            PlayerPrefs.Save();
+        }
+    }
+
+    public int GetMaxLevelUnlocked()
+    {
+        return PlayerPrefs.GetInt("MaxLevelUnlocked", 0);
     }
 }
