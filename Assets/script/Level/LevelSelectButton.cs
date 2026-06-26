@@ -57,15 +57,14 @@ public class LevelSelectButton : MonoBehaviour
     {
         if (GameManager.Instance == null) return;
 
-        // KUNCI UTAMA: Level 1 selalu masuk ke komik, tidak peduli game sudah tamat atau belum!
         if (targetLevelIndex == 0)
         {
-            GameManager.Instance.PlayLevel1WithComic();
+            ComicManager.Instance.PlayComic();
         }
         else
         {
             GameManager.Instance.savedLevel = targetLevelIndex;
-            GameManager.Instance.startGame();
+            GameManager.Instance.StartGame();
         }
     }
 }

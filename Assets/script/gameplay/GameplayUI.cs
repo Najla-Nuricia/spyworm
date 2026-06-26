@@ -24,7 +24,7 @@ public class GameplayUI : MonoBehaviour
         if (startGameButton != null && GameManager.Instance != null)
         {
             startGameButton.onClick.RemoveAllListeners();
-            startGameButton.onClick.AddListener(GameManager.Instance.startGame);
+            startGameButton.onClick.AddListener(GameManager.Instance.StartGame);
         }
     }
 }
