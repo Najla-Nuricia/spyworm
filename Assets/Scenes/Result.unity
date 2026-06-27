@@ -2103,7 +2103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 253dce5d52bca50479b137660a49afd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  delayTime: 0.5
+  delayTime: 1
   savedLevel: 0
   totalLevel: 0
   isGameBeaten: 0

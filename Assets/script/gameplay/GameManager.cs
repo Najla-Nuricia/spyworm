@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [SerializeField] private float delayTime = 0.5f;
+    [SerializeField] private float delayTime = 1f;
 
     [HideInInspector] public int savedLevel = 0;
     [HideInInspector] public int totalLevel;
