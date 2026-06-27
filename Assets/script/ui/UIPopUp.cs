@@ -7,12 +7,31 @@ public class UIPopUp : MonoBehaviour
     [SerializeField] private float duration = 0.3f;
     [SerializeField] private Ease openEase = Ease.OutBack;
     [SerializeField] private Ease closeEase = Ease.InBack;
+    
+    [Header("Target Level (0 = Level 1)")]
+    [SerializeField] private int targetLevelIndex = 0; 
 
     private Vector3 originalScale;
 
     private void Awake()
     {
         originalScale = transform.localScale;
+    }
+
+    private void Start()
+    {
+        // Mengecek apakah LevelManager sudah ada dan membandingkan level saat ini
+        if (LevelManager.Instance != null)
+        {
+            if (LevelManager.Instance.currentLevel == targetLevelIndex)
+            {
+                PopUp();
+            }
+            else
+            {
+                gameObject.SetActive(false);
+            }
+        }
     }
 
     public void PopUp()

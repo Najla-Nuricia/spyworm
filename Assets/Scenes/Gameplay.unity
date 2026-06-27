@@ -2770,14 +2770,14 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 886157278569941834, guid: f9258b4f624be4c40bc6c4082f58e252, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
-  m_FillCenter: 1
+  m_FillCenter: 0
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
@@ -3400,7 +3400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5441,7 +5441,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5776,8 +5776,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "How to play\n1. Move the inchworm's head and tail using your mouse.\r\n2.
-    Avoid obstacles with the head and tail. \nyour body is ok\r\n"
+  m_text: "How to play\n1. Hold your left click to move head and tail\r\n2. Avoid
+    obstacles with the head and tail. \nyour body is ok\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3dd34b5630dd39640a108ddc0956b275, type: 2}
   m_sharedMaterial: {fileID: 1182326168821681319, guid: 3dd34b5630dd39640a108ddc0956b275, type: 2}
@@ -6862,6 +6862,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7355027042989857148, guid: f38746b632335ec45b580816a6efc1b8, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9087880231279837230, guid: f38746b632335ec45b580816a6efc1b8, type: 3}
       propertyPath: m_Name
       value: LevelLoader
@@ -7323,7 +7327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -7627,7 +7631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -7669,7 +7673,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2003037705
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7744,6 +7748,7 @@ MonoBehaviour:
   duration: 0.3
   openEase: 27
   closeEase: 26
+  targetLevelIndex: 0
 --- !u!1 &2014884263
 GameObject:
   m_ObjectHideFlags: 0
