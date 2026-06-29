@@ -52,8 +52,6 @@ public class GameManager : MonoBehaviour
 
     public void GoToNextLevel()
     {
-        if (isTransitioning) return;
-        isTransitioning = true;
 
         UnlockNextLevel(savedLevel);
         savedLevel++;
