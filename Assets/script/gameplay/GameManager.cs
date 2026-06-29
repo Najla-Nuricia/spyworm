@@ -5,6 +5,8 @@ using System.Collections;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public GameMusicManager musicManager;
+    private bool isTransitioning = false;
 
     [SerializeField] private float delayTime = 1f;
 
@@ -14,7 +16,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        
         if (Instance == null)
         {
             Instance = this;
@@ -44,11 +45,16 @@ public class GameManager : MonoBehaviour
 
     public void Home()
     {
+        if (isTransitioning) return;
+        isTransitioning = true;
         StartCoroutine(LoadSceneWithDelay("MainMenu"));
     }
 
     public void GoToNextLevel()
     {
+        if (isTransitioning) return;
+        isTransitioning = true;
+
         UnlockNextLevel(savedLevel);
         savedLevel++;
 
@@ -59,6 +65,7 @@ public class GameManager : MonoBehaviour
             StartCoroutine(LoadSceneWithDelay("MainMenu"));
             return;
         }
+        
 
         StartCoroutine(LoadSceneWithDelay("Gameplay"));
     }
@@ -66,7 +73,22 @@ public class GameManager : MonoBehaviour
     IEnumerator LoadSceneWithDelay(string sceneName)
     {
         yield return new WaitForSeconds(delayTime);
-        SceneManager.LoadScene(sceneName);
+
+        if (musicManager != null)
+        {
+            musicManager.FadeOutAndStop();
+        }
+
+        SceneTransition transition = FindFirstObjectByType<SceneTransition>();
+
+        if (transition != null)
+        {
+            transition.StartTransition(sceneName);
+        }
+        else
+        {
+            SceneManager.LoadScene(sceneName);
+        }
     }
 
     public void UnlockNextLevel(int completedLevelIndex)

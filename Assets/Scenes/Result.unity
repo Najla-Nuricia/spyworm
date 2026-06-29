@@ -1118,6 +1118,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5959140753355552908, guid: f38746b632335ec45b580816a6efc1b8, type: 3}
+      propertyPath: fadeDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 9087880231279837230, guid: f38746b632335ec45b580816a6efc1b8, type: 3}
       propertyPath: m_Name
       value: LevelLoader
@@ -2103,6 +2107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 253dce5d52bca50479b137660a49afd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  musicManager: {fileID: 0}
   delayTime: 1
   savedLevel: 0
   totalLevel: 0

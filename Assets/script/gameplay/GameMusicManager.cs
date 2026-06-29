@@ -41,8 +41,18 @@ public class GameMusicManager : MonoBehaviour
             fadeTween.Kill();
         }
 
-        audioSource.DOFade(0f, fadeDuration)
+        fadeTween = audioSource.DOFade(0f, fadeDuration)
             .SetUpdate(true)
-            .OnComplete(() => audioSource.Stop());
+            .OnComplete(() => {
+                if (audioSource != null) audioSource.Stop();
+            });
+    }
+
+    private void OnDestroy()
+    {
+        if (fadeTween != null && fadeTween.IsActive())
+        {
+            fadeTween.Kill();
+        }
     }
 }

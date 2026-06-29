@@ -479,7 +479,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!1 &95949079
 GameObject:
@@ -1724,7 +1724,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!224 &869881951
 RectTransform:
@@ -1896,6 +1896,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 941452037}
   m_CullTransparentMesh: 1
+--- !u!1001 &946334771
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5234046628499861635, guid: f38746b632335ec45b580816a6efc1b8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 542.6062
+      objectReference: {fileID: 0}
+    - target: {fileID: 5234046628499861635, guid: f38746b632335ec45b580816a6efc1b8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 328.21304
+      objectReference: {fileID: 0}
+    - target: {fileID: 5234046628499861635, guid: f38746b632335ec45b580816a6efc1b8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5234046628499861635, guid: f38746b632335ec45b580816a6efc1b8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5234046628499861635, guid: f38746b632335ec45b580816a6efc1b8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5234046628499861635, guid: f38746b632335ec45b580816a6efc1b8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5234046628499861635, guid: f38746b632335ec45b580816a6efc1b8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5234046628499861635, guid: f38746b632335ec45b580816a6efc1b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5234046628499861635, guid: f38746b632335ec45b580816a6efc1b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5234046628499861635, guid: f38746b632335ec45b580816a6efc1b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5959140753355552908, guid: f38746b632335ec45b580816a6efc1b8, type: 3}
+      propertyPath: fadeDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087880231279837230, guid: f38746b632335ec45b580816a6efc1b8, type: 3}
+      propertyPath: m_Name
+      value: LevelLoader
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f38746b632335ec45b580816a6efc1b8, type: 3}
 --- !u!1 &965800930
 GameObject:
   m_ObjectHideFlags: 0
@@ -2699,7 +2760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameMusicManager
   musicClip: {fileID: 8300000, guid: b7f5b66a3cb8666469a611895931a7ca, type: 3}
   volume: 1
-  fadeDuration: 0.5
+  fadeDuration: 1
 --- !u!4 &1413136055
 Transform:
   m_ObjectHideFlags: 0
@@ -3181,6 +3242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 253dce5d52bca50479b137660a49afd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  musicManager: {fileID: 1413136054}
   delayTime: 1
   savedLevel: 0
   totalLevel: 0
@@ -3607,6 +3669,7 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 946334771}
   - {fileID: 1003483475}
   - {fileID: 1987304384}
   - {fileID: 744790294}

@@ -7,15 +7,16 @@ public class SceneTransition : MonoBehaviour
 {
     private CanvasGroup canvasGroup;
 
-    [SerializeField] private float fadeDuration = 2f;
+    [SerializeField] private float fadeDuration = 0.5f;
 
-    void Awake()
+    private void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
         canvasGroup.alpha = 1;
+        canvasGroup.blocksRaycasts = false;
     }
 
-    void Start()
+    private void Start()
     {
         canvasGroup.DOFade(0, fadeDuration);
     }
@@ -25,9 +26,7 @@ public class SceneTransition : MonoBehaviour
         canvasGroup.blocksRaycasts = true;
 
         canvasGroup.DOKill();
-
-        canvasGroup
-            .DOFade(1, fadeDuration)
+        canvasGroup.DOFade(1, fadeDuration)
             .OnComplete(() =>
             {
                 SceneManager.LoadScene(sceneName);
