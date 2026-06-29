@@ -45,8 +45,6 @@ public class GameManager : MonoBehaviour
 
     public void Home()
     {
-        if (isTransitioning) return;
-        isTransitioning = true;
         StartCoroutine(LoadSceneWithDelay("MainMenu"));
     }
 
