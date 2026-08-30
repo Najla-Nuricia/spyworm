@@ -1,10 +1,3 @@
-markdown_content = """# 🐛 BLOOPER (Bottle + Looper)
-
-*The Ultimate Tactical Stealth Physics Puzzle* 
-
-[![Platform](https://img.shields.io/badge/Platform-PC%20%7C%20Android-blue.svg)]()
-[![Engine](https://img.shields.io/badge/Engine-Unity%202022+-black.svg)]()
-[![Event](https://img.shields.io/badge/Event-GAMESEED%202026-brightgreen.svg)]()
 
 ## 📖 Game Overview
 
